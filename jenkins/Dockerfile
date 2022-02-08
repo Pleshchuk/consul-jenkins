@@ -19,4 +19,7 @@ USER jenkins
 COPY plugins/plugins.txt /usr/share/jenkins/ref/
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
+COPY jcasc/* /usr/share/jenkins/ref/casc_configs/
+ENV CASC_JENKINS_CONFIG /usr/share/jenkins/ref/
+
 ENTRYPOINT ["bash", "/usr/local/bin/jenkins.sh"]
