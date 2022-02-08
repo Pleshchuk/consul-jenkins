@@ -35,13 +35,13 @@ services:
       JENKINS_USER_PASSWORD: 'jenkins'
       JAVA_OPTS: '-Djenkins.install.runSetupWizard=false'
     networks:
-      - jenkins
+      - consul
     ports:
       - 8080:8080
+    volumes:
+      - '//var/run/docker.sock:/var/run/docker.sock'
 
 networks:
   consul:
+    name: consul
     driver: bridge
-  jenkins:
-    driver: bridge
-
