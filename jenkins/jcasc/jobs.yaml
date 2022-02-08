@@ -1,0 +1,19 @@
+jobs:
+  - script: >
+      job("consul-service-build") {
+        description()
+        keepDependencies(false)
+        scm {
+          git {
+            remote {
+              github("Pleshchuk/python-consul-service", "https")
+            }
+            branch("*/main")
+          }
+        }
+        disabled(false)
+        concurrentBuild(false)
+        steps {
+          shell("""docker build . -t fyber-lab-consul-service""")
+        }
+      }
