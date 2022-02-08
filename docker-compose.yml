@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+  
+  consul-server:
+    image: hashicorp/consul:1.10.0
+    container_name: consul-server
+    restart: always
+    volumes:
+     - ./consul/server.json:/consul/config/server.json:ro
+    networks:
+      - consul
+    ports:
+      - "8500:8500"
+      - "8600:8600/tcp"
+      - "8600:8600/udp"
+    command: "agent"
+
+  consul-client:
+    image: hashicorp/consul:1.10.0
+    container_name: consul-client
+    restart: always
+    volumes:
+     - ./consul/client.json:/consul/config/client.json:ro
+    networks:
+      - consul
+    command: "agent"
+
+  jenkins-server:
+    build: ./jenkins/
+    container_name: jenkins-server
+    restart: always
+    environment:
+      JENKINS_USERNAME: 'jenkins'
+      JENKINS_USER_PASSWORD: 'jenkins'
+      JAVA_OPTS: '-Djenkins.install.runSetupWizard=false'
+    networks:
+      - jenkins
+    ports:
+      - 8080:8080
+
+networks:
+  consul:
+    driver: bridge
+  jenkins:
+    driver: bridge
+
