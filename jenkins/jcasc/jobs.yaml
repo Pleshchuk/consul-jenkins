@@ -17,3 +17,23 @@ jobs:
           shell("""docker build . -t fyber-lab-consul-service""")
         }
       }
+  - script: >
+      job("consul-service-deploy") {
+        description()
+        keepDependencies(false)
+        disabled(false)
+        concurrentBuild(false)
+        parameters {
+          stringParam('SERVICE_IMAGE_NAME', 'fyber-lab-consul-service', 'Service image name')
+        }
+        steps {
+          shell(''' 
+            CONTAINER_NAME='consul-service'
+            if [ -n "$(docker ps -a | grep ^${CONTAINER_NAME})" ]; then
+              docker rm $(docker ps -a | grep ^${CONTAINER_NAME} | awk '{print $1}')
+            fi
+
+            docker run --name ^${CONTAINER_NAME} --network=consul ^${SERVICE_IMAGE_NAME}
+          ''')
+        }
+      }
