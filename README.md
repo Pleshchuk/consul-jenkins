@@ -1,3 +1,8 @@
+## Prerequisites
+
+- Docker
+- Docker Compose
+
 ## Tested OS Platform
 This project was tested on Windows OS
 
@@ -14,10 +19,16 @@ consul-client
 
 jenkins-server
 
-## UI access
-To access consul-server UI just use http://localhost:8500 on your local PC
+## Consul Testing procedure
 
-To access jenkins-server UI use http://localhost:8080 on your local PC
+1. Navigate to [http://localhost:8500/ui](http://localhost:8500/ui/) on your local browser.
+2. Explore UI.
+3. Explore [Get Started](https://learn.hashicorp.com/tutorials/consul/get-started) collection.
+
+## Jenkins Testing procedure
+
+1. Navigate to [ttp://localhost:8080](ttp://localhost:8080) on your local browser.
+2. Explore UI.
 
 ## Jenkins Server
 Jenkins server will be started with preconfigured user and two Jenins jobs. 

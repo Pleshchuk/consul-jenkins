@@ -1,23 +1,6 @@
-## Overview
+## Introduction
 
-Deploy a Consul datacenter containing a single server and single client.
-
-## Prerequisites
-
-- Docker
-- Docker Compose
-
-## Deployment procedure
-
-1. Clone [learn-consul-docker](https://github.com/hashicorp/learn-consul-docker) repository.
-2. Navigate to this directory.
-3. `docker-compose up -d`
-
-## Testing procedure
-
-1. Navigate to [http://localhost:8500/ui](http://localhost:8500/ui/) on your local browser.
-2. Explore UI.
-3. Explore [Get Started](https://learn.hashicorp.com/tutorials/consul/get-started) collection.
+This Consul Datacenter Config was forked from https://github.com/hashicorp/learn-consul-docker repository
 
 ## Additional information
 
